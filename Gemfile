@@ -49,7 +49,9 @@ gem 'simple_form'
 gem 'figaro'
 gem 'omniauth'
 gem 'omniauth-facebook'
+
 gem 'carrierwave', github: 'carrierwaveuploader/carrierwave'
+gem 'cloudinary'
 
 gem 'sidekiq'
 gem 'crono'
