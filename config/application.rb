@@ -24,5 +24,7 @@ module Dc
     config.time_zone = 'Moscow'
     # config.i18n.load_path += Dir[root.join('config', 'locales', '**', '*.{rb,yml}')]
     # config.cache_classes = true
+    # Use custom error pages
+    config.exceptions_app = self.routes
   end
 end
