@@ -3,7 +3,7 @@ class User < ApplicationRecord
   TEMP_EMAIL_PREFIX = 'dc@user'
   TEMP_EMAIL_REGEX  = /\Adc@user/
 
-  attr_accessor     :login
+  attr_accessor     :login, :add_admin_role, :remove_admin_role
 
   after_create      :create_profile
   after_initialize  :add_role_to_user,  if: :new_record?
