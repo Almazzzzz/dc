@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160904185345) do
+ActiveRecord::Schema.define(version: 20160905122344) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -67,6 +67,14 @@ ActiveRecord::Schema.define(version: 20160904185345) do
     t.datetime "created_at",        null: false
     t.datetime "updated_at",        null: false
     t.index ["job_id"], name: "index_crono_jobs_on_job_id", unique: true, using: :btree
+  end
+
+  create_table "documents", force: :cascade do |t|
+    t.string   "uri"
+    t.string   "title"
+    t.text     "body"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "emails", force: :cascade do |t|

@@ -18,7 +18,6 @@ Rails.application.routes.draw do
   resources   :chat_messages
 
   devise_for 	:users, :controllers => { omniauth_callbacks: 'omniauth_callbacks' }
-  #devise_for :users, ActiveAdmin::Devise.config
   ActiveAdmin.routes(self)
 
   resources   :users do
@@ -39,4 +38,6 @@ Rails.application.routes.draw do
   match "/422", to: "errors#unacceptable", via: :all
   match "/500", to: "errors#internal_server_error", via: :all
 
+  resources :documents
+  
 end

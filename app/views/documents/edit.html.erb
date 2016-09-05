@@ -1,0 +1,14 @@
+<%= simple_form_for(@document) do |f| %>
+  <%= f.error_notification %>
+
+  <div class="form-inputs">
+    <p><b>URI: </b><%= @document.uri %></p>
+    <%= f.input :title, label: 'Title', autocomplete: "off" %>
+    <%= f.input :body, label: 'Body', autocomplete: "off", input_html: {rows: 7} %>
+  </div>
+
+  <div class="form-actions">
+    <%= f.submit "Save Document", class: "btn btn-lg btn-primary" %>
+  </div>
+  <br>
+<% end %>
