@@ -1,0 +1,7 @@
+<h2><%= @document.title %></h2>
+<p><b>Body:</b></p>
+<p><%= @document.body %></p>
+
+<% if current_user.is_admin? or current_user.is_moderator?  %>
+		<%= link_to 'Edit', edit_document_path(@document), type: 'button', class: 'btn btn-default' %>  
+<% end %>
