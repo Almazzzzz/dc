@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160902091534) do
+ActiveRecord::Schema.define(version: 20160904185345) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -94,6 +94,14 @@ ActiveRecord::Schema.define(version: 20160902091534) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_identities_on_user_id", using: :btree
+  end
+
+  create_table "images", force: :cascade do |t|
+    t.string   "uri"
+    t.integer  "post_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["post_id"], name: "index_images_on_post_id", using: :btree
   end
 
   create_table "options", force: :cascade do |t|
@@ -213,10 +221,6 @@ ActiveRecord::Schema.define(version: 20160902091534) do
     t.string   "invited_by_type"
     t.integer  "invited_by_id"
     t.integer  "invitations_count",      default: 0
-    t.string   "provider"
-    t.string   "uid"
-    t.string   "name"
-    t.string   "image"
     t.index ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true, using: :btree
     t.index ["email"], name: "index_users_on_email", unique: true, using: :btree
     t.index ["invitation_token"], name: "index_users_on_invitation_token", unique: true, using: :btree
@@ -247,6 +251,7 @@ ActiveRecord::Schema.define(version: 20160902091534) do
   add_foreign_key "chat_messages", "users"
   add_foreign_key "emails", "users"
   add_foreign_key "identities", "users"
+  add_foreign_key "images", "posts"
   add_foreign_key "options", "polls"
   add_foreign_key "payments", "users"
   add_foreign_key "polls", "users"
