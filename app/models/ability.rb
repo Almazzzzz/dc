@@ -13,6 +13,7 @@ class Ability
         can :read, :all
         can [:create, :update, :destroy], Post, :user => user
         can [:create, :update, :destroy], Poll, :user => user
+        can [:create, :update, :destroy], Profile, :user => user
         # cannot :voting, Poll do |poll| 
         #     poll.votes.pluck(:user_id).include? user.id
         # end

@@ -2,7 +2,7 @@ ActiveAdmin.register Profile do
 
 	actions :all, except: [:new, :create, :destroy]
 
-	permit_params :first_name, :last_name, :middle_name, :phone, :avatar, :avatar_cache, :remove_avatar
+	permit_params :first_name, :last_name, :middle_name, :phone, :show_phone, :show_email, :avatar, :avatar_cache, :remove_avatar
 	
 	belongs_to :user, optional: true
 
@@ -28,6 +28,8 @@ ActiveAdmin.register Profile do
 			row :user
 			row :full_name
 			row :phone
+			row :show_phone
+			row :show_email
 			row('Avatar path') 	{ |profile| profile.avatar }
 			row('Avatar') 			{ |profile| profile.avatar? ? 
 														image_tag(profile.avatar, size: '50') : image_tag('man.png', size: '50') }
@@ -42,7 +44,9 @@ ActiveAdmin.register Profile do
 			f.input :first_name
 			f.input :middle_name
 			f.input :last_name
-			f.input :phone, as: :phone
+			f.input :phone
+			f.input :show_phone
+			f.input :show_email
 			f.inputs 'Avatar' do
 				f.input :avatar, hint: profile.avatar? ? image_tag(profile.avatar, size: '100') : image_tag('man.png', size: '100')
 				f.hidden_field :avatar_cache

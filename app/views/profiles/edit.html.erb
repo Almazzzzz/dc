@@ -8,6 +8,9 @@
       <%= f.input :last_name %>
       <%= f.input :middle_name %>
       <%= f.input :phone %>
+      <p><b>Show data:</b></p>
+      <%= f.input :show_phone, label: 'Show my phone to other users' %>
+      <%= f.input :show_email, label: 'Show my e-mail to other users' %>
       <%= f.input :avatar, hint: @profile.avatar? ? image_tag(@profile.avatar, size: '100') : image_tag('man.png', size: '100') %>
       <%= f.hidden_field :avatar_cache %>
       <%= f.input :remove_avatar, as: :boolean, label: 'Remove avatar' if @profile.avatar? %>
